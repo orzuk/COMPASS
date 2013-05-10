@@ -1,0 +1,3 @@
+#!/bin/csh -f
+
+scp "$1" shental@mani.cslab.openu.ac.il:$2
