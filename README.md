@@ -9,8 +9,8 @@ The STRIP repository contains programs for reconstruction of microbial species i
 The repository includes source code, executables and example datasets. 
 
 2. Installation:
-Download the file SHRIMP.tgz from https://github.com/orzuk/STRIP
-Extract the SHRIMP.tgz file to a directory of your choice, add to matlab path and run.
+Download the file STRIP.tgz from https://github.com/orzuk/STRIP
+Extract the STRIP.tgz file to a directory of your choice, add to Matlab path and run.
 Alternatively, you can clone the repository directly from github, by running the following: 
 T.B.D.
 
@@ -51,7 +51,7 @@ preprocessByExistanceFlag
 Provide code for splitting the database
 
 
-This will result in output-mat-file-name, a .mat file with prepared database in SHRIMP format, which is then used in the main solver (section 3.2). 
+This will result in output-mat-file-name, a .mat file with prepared database in STIRP format, which is then used in the main solver (section 3.2). 
 
 The program comes with the 16S sequence database described in the paper (see section 4). 
 
