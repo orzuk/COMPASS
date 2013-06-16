@@ -23,14 +23,13 @@ The package is required for mixture reconstruction module.
    Please download from http://www.mothur.org/ , install in a directory of your choice and add to path.  
 This package is required only for the solution comparison module of STRIP. 
 
-	2.2. Mex files:
+2.2. Mex files:
 To enhance performance, parts of STRIP are written in C and compiled to .mex files accessible by Matlab. We’ve provided .mex files for unix and pc in the directory /src/mex. If you need to create .mex files for your environment, you will need to run the following command in Matlab: 
 		CompileSTRIPMexFiles 
 	
-	2.3 Demo/Usage Example: 
-	After installation, you can run the following script/function
-	STRIPMain
-	This script demonstrates most of STRIP’s main modules. 
+2.3 Demo/Usage Example: 
+After installation, you can run the following script/function STRIPMain
+This script demonstrates most of STRIP’s main modules. 
 It simulates a bacterial mixture, sample reads, reconstruct identities, and compare reconstructed solution to original vector. 
 
 
@@ -58,9 +57,8 @@ The program comes with the 16S sequence database described in the paper (see sec
 3.2. Reconstruct mixture identities from reads:
 This is the main utility of STRIP. It reconstructs a microbial sample from short read data, 
 and a prepared sequence database (see Section 3.1).
-Programs
 
-1. Main solver: SolveMixingMatrixFromReads
+Main solver program: SolveMixingMatrixFromReads
 
 Input:
 Reads (fasta file)
@@ -102,6 +100,8 @@ Usage: SimulateReadsFromSequences ….
 This module evaluates the accuracy of the reconstructed solution, when a ‘ground-truth’ solution 
 is available (either in simulations or using other technologies, e.g. Sanger sequencing). 
 
+EvaluateSolutionAccuracy
+
 Input:
 Original mixture file (Two columns: ID+Freq)
 Reconstructed mixture (Two columns: ID+Freq)
@@ -113,6 +113,7 @@ Weighted recall and precision (or other metrics?)
 
 Usage: 
 
+EvaluateSolutionAccuracy orig-mixture-file recons-mixture-file sim-metric sim-threshold freq-threshold
 
 4. Data:
 The following files are available in the ‘database’ directory: 
