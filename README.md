@@ -4,7 +4,7 @@ Convex Optimization for Microbial Profiling by Aggregating Short Sequence reads
 
 
 1. General:
-The STRIP repository contains programs for reconstruction of microbial species identities and frequencies from massively parallel sequencing short-reads data. 
+The COMPASS repository contains programs for reconstruction of microbial species identities and frequencies from massively parallel sequencing short-reads data. 
 
 The repository includes source code, executables and example datasets. 
 
@@ -15,7 +15,7 @@ Alternatively, you can clone the repository directly from github, by running the
 T.B.D.
 
 2.1. Dependencies:
-STRIP requires the installation of additional packages for some of its operations. To ensure operations of all STRIP modules, you will need to download the following packages: 
+COMPASS requires the installation of additional packages for some of its operations. To ensure operations of all COMPASS modules, you will need to download the following packages: 
 (i) CVX - Matlab convex optimization toolbox. 
 Please download and install from http://cvxr.com/cvx/.
 The package is required for mixture reconstruction module.
@@ -124,7 +124,7 @@ s16_data_uni_packed.mat - a preprocessed version of the 16s database. Can be gen
 
 5. Acknowledgment
 
-STRIP was developed by: 
+COMPASS was developed by: 
 Amnon Amir, Noam Shental, Amit Zeisel and Or Zuk, as part of work on the papers,
 
 (i) “Accurate Profiling of Microbial Communities from Massively Parallel Sequencing using Convex Optimization”, O. Zuk, A. Amir, A. Zeisel, O. Shamir and N. Shental (SPIRE13).
