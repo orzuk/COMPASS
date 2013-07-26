@@ -1,7 +1,7 @@
-STRIP
-=====
+COMPASS
+=======
+Convex Optimization for Microbial Profiling by Aggregating Short Sequence reads
 
-ShorT-Read Identification and Profiling of Microbial Communities
 
 1. General:
 The STRIP repository contains programs for reconstruction of microbial species identities and frequencies from massively parallel sequencing short-reads data. 
@@ -9,8 +9,8 @@ The STRIP repository contains programs for reconstruction of microbial species i
 The repository includes source code, executables and example datasets. 
 
 2. Installation:
-Download the file STRIP.tgz from https://github.com/orzuk/STRIP
-Extract the STRIP.tgz file to a directory of your choice, add to Matlab path and run.
+Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS
+Extract the COMPASS.tgz file to a directory of your choice, add to Matlab path and run.
 Alternatively, you can clone the repository directly from github, by running the following: 
 T.B.D.
 
@@ -24,12 +24,12 @@ The package is required for mixture reconstruction module.
 This package is required only for the solution comparison module of STRIP. 
 
 2.2. Mex files:
-To enhance performance, parts of STRIP are written in C and compiled to .mex files accessible by Matlab. We’ve provided .mex files for unix and pc in the directory /src/mex. If you need to create .mex files for your environment, you will need to run the following command in Matlab: 
-		CompileSTRIPMexFiles 
+To enhance performance, parts of COMPASS are written in C and compiled to .mex files accessible by Matlab. We’ve provided .mex files for unix and pc in the directory /src/mex. If you need to create .mex files for your environment, you will need to run the following command in Matlab: 
+		CompileCOMPASSMexFiles 
 	
 2.3 Demo/Usage Example: 
-After installation, you can run the following script/function STRIPMain
-This script demonstrates most of STRIP’s main modules. 
+After installation, you can run the following script/function COMPASSMain
+This script demonstrates most of COMPASS' main modules. 
 It simulates a bacterial mixture, sample reads, reconstruct identities, and compare reconstructed solution to original vector. 
 
 
