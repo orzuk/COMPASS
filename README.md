@@ -127,9 +127,9 @@ s16_data_uni_packed.mat - a preprocessed version of the 16s database. Can be gen
 STRIP was developed by: 
 Amnon Amir, Noam Shental, Amit Zeisel and Or Zuk, as part of work on the papers,
 
-(i) “Accurate Identification and Profiling of Microbial Communities using Massively Parallel Sequencing”, O. Zuk, A. Amir, A. Zeisel, O. Shamir and N. Shental (submitted).
+(i) “Accurate Profiling of Microbial Communities from Massively Parallel Sequencing using Convex Optimization”, O. Zuk, A. Amir, A. Zeisel, O. Shamir and N. Shental (SPIRE13).
 
-(ii) “High resolution microbial community reconstruction by integrating of short reads from multiple 16S rRNA regions“ 
+(ii) “High Resolution Microbial Community Reconstruction by Integrating Short Reads from Multiple 16S rRNA Regions“ 
 A. Amir, A. Zeisel, O. Zuk, M. Elgart, S. Stern, O. Shamir, P.J. Turnbaugh, Y. Soen and N. Shental (submitted).
 
 Please cite the above papers if using the package. 
