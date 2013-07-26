@@ -21,7 +21,7 @@ Please download and install from http://cvxr.com/cvx/.
 The package is required for mixture reconstruction module.
 (ii) Mothur - Microbial ecology bioinformatics package. 
    Please download from http://www.mothur.org/ , install in a directory of your choice and add to path.  
-This package is required only for the solution comparison module of STRIP. 
+This package is required only for the solution comparison module of COMPASS. 
 
 2.2. Mex files:
 To enhance performance, parts of COMPASS are written in C and compiled to .mex files accessible by Matlab. We’ve provided .mex files for unix and pc in the directory /src/mex. If you need to create .mex files for your environment, you will need to run the following command in Matlab: 
@@ -55,7 +55,7 @@ This will result in output-mat-file-name, a .mat file with prepared database in 
 The program comes with the 16S sequence database described in the paper (see section 4). 
 
 3.2. Reconstruct mixture identities from reads:
-This is the main utility of STRIP. It reconstructs a microbial sample from short read data, 
+This is the main utility of COMPASS. It reconstructs a microbial sample from short read data, 
 and a prepared sequence database (see Section 3.1).
 
 Main solver program: SolveMixingMatrixFromReads
