@@ -4,12 +4,14 @@ Convex Optimization for Microbial Profiling by Aggregating Short Sequence reads
 
 
 1. General:
+
 The COMPASS repository contains programs for reconstruction of microbial species identities 
 and frequencies from massively parallel sequencing short-reads data. 
 
 The repository includes source code, executables and example datasets, and can be used for 
 microbial profiling of experimental and simulated reads, for simulating reads, and for evaluating
 prifling results. 
+
 
 2. Installation:
 Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS
@@ -58,7 +60,7 @@ Namely varying the number of reads, read length and number of bacteria – See f
 See file: " example_experimental_reads_sample_L2.m "  
 
 
- 
+
 
 3. Directories in the COMPASS package: 
 
