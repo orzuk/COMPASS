@@ -3,7 +3,7 @@ COMPASS
 Convex Optimization for Microbial Profiling by Aggregating Short Sequence reads
 
 
-1. General:
+(1.) General:
 
 The COMPASS repository contains programs for reconstruction of microbial species identities 
 and frequencies from massively parallel sequencing short-reads data. 
@@ -13,7 +13,7 @@ microbial profiling of experimental and simulated reads, for simulating reads, a
 prifling results. 
 
 
-2. Installation:
+(2.) Installation:
 Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS
 Extract the COMPASS.tgz file to a directory of your choice, add to Matlab path and run.
 Alternatively, you can clone the repository directly from github, by running the following: 
