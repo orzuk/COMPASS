@@ -64,17 +64,17 @@ See file: " example_experimental_reads_sample_L2.m "
 
 
 
-(3.) Directories in the COMPASS package: 
+(3.) Directories in the COMPASS package:  
 
-The following directories are avialable after installation: 
+The following directories are avialable after installation:  
 3.1. mFiles (or src?) – Matlab files and mex files.  
 3.2. results – A directory used to save simulation results for the examples. Note that we have already saved several example results that appear in the introductory examples.  
-3.3. database – the Greengenes database used in a COMPASS format. Two databases are provided – the full 16S rRNA gene database and the database of 750bp long sequences covering variable regions V3-V6 (see manuscript)
-3.4. experimentalReads –  example files for larva sample L2. Other experimental data presented in the paper are available at the MG-RAST website: http://metagenomics.anl.gov/linkin.cgi?project=5237  
+3.3. database – the Greengenes database used in a COMPASS format. Two databases are provided – the full 16S rRNA gene database and the database of 750bp long sequences covering variable regions V3-V6 (see manuscript)  
+3.4. experimentalReads –  example files for larva sample L2. Other experimental data presented in the paper are available at the MG-RAST website: http://metagenomics.anl.gov/linkin.cgi?project=5237    
 
-In addition, you will need to add the following directories to the COMPASS master directory (see Section 2.2 Dependencies)
-3.5. CVX – the optimization software used, downloaded from the CVX website (http://cvxr.com/cvx/) 
-3.6. mothur – the mothur software (http://www.mothur.org/) used to calculated distances between correct and reconstructed bacteria.
+In addition, you will need to add the following directories to the COMPASS master directory (see Section 2.2 Dependencies)  
+3.5. CVX – the optimization software used, downloaded from the CVX website (http://cvxr.com/cvx/)  
+3.6. mothur – the mothur software (http://www.mothur.org/) used to calculated distances between correct and reconstructed bacteria.  
 
 
 
