@@ -18,8 +18,10 @@ Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS
 Extract the COMPASS.tgz file to a directory of your choice, add to Matlab path and run.
 Alternatively, you can clone the repository directly from github, by running the following: 
 
-git ... [T.B.D.]
+git clone https://github.com/orzuk/COMPASS.git
 
+Or using ssh: 
+git clone git@github.com:orzuk/COMPASS.git
 
 2.1 Requirements: 
 
