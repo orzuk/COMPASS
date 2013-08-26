@@ -14,9 +14,9 @@ prifling results.
 
 
 (2.) Installation:
-Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS
-Extract the COMPASS.tgz file to a directory of your choice, add to Matlab path and run.
-Alternatively, you can clone the repository directly from github, by running the following: 
+Download the file COMPASS.tgz from https://github.com/orzuk/COMPASS .  
+Extract the COMPASS.tgz file to a directory of your choice, add to Matlab path and run.  
+Alternatively, you can clone the repository directly from github, by running the following:  
 
 git clone https://github.com/orzuk/COMPASS.git
 
