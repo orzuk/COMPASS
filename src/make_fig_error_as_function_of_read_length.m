@@ -1,39 +1,45 @@
-%   Gerate all figures for BCR math paper
+% Gerate figures for the paper:
+% "Accurate Identification and Profiling of Microbial Communities using Massively Parallel Sequencing"
+%
+
+plot_identifiability=1;  % plot # of species identifiable as function of read length L. Figure 2 in paper
+plot_error = 1;  % Plot reconstruction error as function of read length L. Figure 3 in paper
+
 AssignGeneralConstants;
 
 start_time = cputime;
 switch machine
     case PC
-        input_dir = 'C:\Users\orzuk\Google Drive\sync\Dropbox\bacterial_nextgen\data\SimulationForRecomb';  % here are all seqeunces
-        output_figs_dir = 'C:\\Users\orzuk\Google Drive\sync\Dropbox\bacterial_nextgen\figs\'; % save figures
-        database_16s_file = '../../compressed_sensing/metagenomics/nextgen/data/bacteria_s16_data_uni.mat';
-        database_16s_packed_file = '../../compressed_sensing/metagenomics/nextgen/data/s16_data_uni_packed.mat';
+        root_MCR_dir =  'C:\Users\orzuk\Google Drive\sync\Dropbox\bacterial_nextgen\';  % Change to your working directory
+        %         input_dir = 'C:\Users\orzuk\Google Drive\sync\Dropbox\bacterial_nextgen\data\SimulationForRecomb';  % here are all seqeunces
+        %         output_figs_dir = 'C:\\Users\orzuk\Google Drive\sync\Dropbox\bacterial_nextgen\figs\'; % save figures
+        %         database_16s_file = '../../compressed_sensing/metagenomics/nextgen/data/bacteria_s16_data_uni.mat';
+        %         database_16s_packed_file = '../../compressed_sensing/metagenomics/nextgen/data/s16_data_uni_packed.mat';
     case UNIX
-        
-        input_dir = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/SimulationForRecomb';  % here are all seqeunces
-        %        output_figs_dir = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/SimulationForRecomb/figs/'; % save figures
-        database_16s_file = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/bacteria_s16_data_uni.mat';
-        % database_16s_packed_file = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/s16_data_uni_packed.mat';
-        database_16s_packed_file = '/seq/orzuk/identifiability/s16_data_uni_packed.mat'; % temp (due to space problems in /seq/orzuk2)
-        output_figs_dir = '/seq/orzuk/identifiability/';  % temp (space problems)
+        root_MCR_dir = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/'; % Change to your working directory
+        %         input_dir = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/SimulationForRecomb';  % here are all seqeunces
+        %         %        output_figs_dir = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/SimulationForRecomb/figs/'; % save figures
+        %         database_16s_file = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/bacteria_s16_data_uni.mat';
+        %         % database_16s_packed_file = '/seq/orzuk2/compressed_sensing/metagenomics/next_gen/data/s16_data_uni_packed.mat';
+        %         database_16s_packed_file = '/seq/orzuk/identifiability/s16_data_uni_packed.mat'; % temp (due to space problems in /seq/orzuk2)
+        %         output_figs_dir = '/seq/orzuk/identifiability/';  % temp (space problems)
 end
+input_dir = fullfile(root_MCR_dir, 'data/SimulationForRecomb'); % Take relative links
+database_16s_file = fullfile(root_MCR_dir, 'bacteria_s16_data_uni.mat');
+database_16s_packed_file = fullfile(root_MCR_dir, 's16_data_uni_packed.mat');
+output_figs_dir = fullfile(root_MCR_dir, 'figs');
 
 input_files = GetFileNames(fullfile(input_dir, 'For*.mat'), 1)
 sparse_summary_file_name = fullfile(input_dir, 'all_runs_sparse_representation.mat');
 
 
 num_files = length(input_files);
-L = 100; % read length
+L = 100; % maximal read length
 
-plot_error = 0;  % Plot reconstruction error as function of read length L
-plot_identifiability=1;  % plot # of species identifiable as function of L
 
-%input_file = 'ForOr-Reads-100000';
-
-% T = load(database_16s_packed_file);
-
-% XXX = load(fullfile(input_dir, input_file));
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Figure 3: Reconstruction Error %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if(plot_error)
     S = load(database_16s_file, 'Header_uni', 'Sequence_packed', 'len_uni');
     num_reads_vec = zeros(num_files, 1); l2_error_vec = zeros(num_files, 1); mahalanobis_error_vec = zeros(num_files, 1);
@@ -106,7 +112,7 @@ if(plot_error)
     mahalanobis_error_vec = mahalanobis_error_vec .* sqrt(mean(S.len_uni));
     
     
-    for log_x_flag = 0:1
+    for log_x_flag = 0:1 % plot in linear and log scales
         for log_y_flag = 0:1
             fig = figure;
             switch log_x_flag
@@ -162,7 +168,7 @@ if(plot_error)
 end % if plot error
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Figure 2: Identifiability as function of read length %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 if(plot_identifiability)
@@ -222,8 +228,8 @@ if(plot_identifiability)
             'A', 'kmers_packed'); % save figure data
     end
     if(machine == PC) % here machine is PC
-        output_figs_dir = 'identifiability\'
-        num_identifiable_vec=zeros(100,1); rand_num_identifiable_vec=zeros(100,1); 
+        output_figs_dir = 'identifiability\';
+        num_identifiable_vec=zeros(100,1); rand_num_identifiable_vec=zeros(100,1);
         for min_L = [5:9 10 15:10:95] % should be 5 to 95 % first load data
             if(min_L < 10)
                 max_L=min_L;
@@ -247,41 +253,29 @@ if(plot_identifiability)
             rand_num_identifiable_vec(min_L:max_L) = UUU_rand{min_L}.rand_num_identifiable(min_L:max_L);
         end
         
-        close all;     
+        close all;
         big_fig = figure(1); plot(1:max_L, num_identifiable_vec ./ k_species, 'r', 'linewidth', 2); hold on;
         plot(1:max_L, rand_num_identifiable_vec ./ k_species, 'b', 'linewidth', 2);
-        xlabel('Read Length'); ylabel('Frac. Identifiable Species'); xlim([1 100]); ylim([0 1.005]); 
-%        title(['Identifiability for ' num2str(k_species) ' species']);
-        inset_fig = figure(2); plot(1:max_L, num_identifiable_vec ./ k_species, 'r', 'linewidth', 2); hold on; 
+        xlabel('Read Length'); ylabel('Frac. Identifiable Species'); xlim([1 100]); ylim([0 1.005]);
+        %        title(['Identifiability for ' num2str(k_species) ' species']);
+        inset_fig = figure(2); plot(1:max_L, num_identifiable_vec ./ k_species, 'r', 'linewidth', 2); hold on;
         plot(1:max_L, rand_num_identifiable_vec ./ k_species, 'b', 'linewidth', 2);
-%        xlabel('Read Length'); ylabel('Frac. Identifiable Species');
+        %        xlabel('Read Length'); ylabel('Frac. Identifiable Species');
         xlim([7 100]); ylim([0.96 1.001]);
-
-        [h_m h_i]=inset(big_fig,inset_fig,0.7);
-%        set(h_i,'xtick',2.35:.025:2.45,'xlim',[2.35,2.45])
-
-        legend(h_m, {'16s', 'rand.'}, 4); legend(h_m, 'boxoff');
         
-        my_saveas(gcf, fullfile(output_figs_dir, 'identifiability_vs_read_length'), {'epsc', 'pdf'});
+        [h_m h_i]=inset(big_fig,inset_fig,0.7);
+        %        set(h_i,'xtick',2.35:.025:2.45,'xlim',[2.35,2.45])
+        
+        legend(h_m, {'16s', 'rand.'}, 4); legend(h_m, 'boxoff');        
+        my_saveas(gcf, fullfile(output_figs_dir, 'identifiability_vs_read_length'), {'epsc', 'pdf'}); % save figure 
     end % if machine
     %    end % loop on iterations
-end % if identifiability
+end % if plot identifiability
 
 
-% % % % % % % Temp: Pack sequences again to uint32 (NOT double!!) format
-% % % % % % Sequence_packed = cell(length(S.Sequence_uni), 1);
-% % % % % % for i=1:length(S.Sequence_uni)
-% % % % % %     if(mod(i, 1000) == 0)
-% % % % % %         pack_seq = i
-% % % % % %     end
-% % % % % %     Sequence_packed{i} = pack_seqs(S.Sequence_uni{i}, matlab_word_size);
-% % % % % % end
-% % % % % % Header_uni = S.Header_uni; len_uni = S.len_uni;
-% % % % % % save(database_16s_packed_file, 'Header_uni', 'Sequence_packed', 'len_uni'); % save new packed sequence (uint32 for PC, uint64 for UNIX)
-% % % % % %
 
 
-% Run jobs: 
+% Run jobs:
 for rand_flag = 1:1 % 0:0 % 1
     for min_L=5:20 % 5:10:95
         max_L=min_L; % +15;
@@ -308,94 +302,4 @@ for rand_flag = 1:1 % 0:0 % 1
     end
 end
 
-
-
-%%% DEbug kmers not existing in sequence!!!
-
-new_debug_flag=0;
-if(new_debug_flag)
-    k_species=500;
-    good_seq_inds = setdiff(1:num_species, bad_seq_inds)
-    I=good_seq_inds(1:k_species);
-    [identifiable_inds{L} A kmers_packed] = get_identifiable_species(S.Sequence_packed(I), S.len_uni(I), L); % for each read length - find which species are identifiable
-    
-    
-    
-    
-    
-    U = load('unix_kmers_packed.mat'); U.kmers_nt = int2nt(U.kmers);
-    P = load('pc_kmers_packed.mat'); P.kmers_nt = int2nt(P.kmers);
-    INT.kmers_nt = intersect(U.kmers_nt, P.kmers_nt, 'rows');
-    NEW = []; NEW.kmers_nt = int2nt(unpack_seqs(kmers_packed, L)); NEW.Mat = zeros(size(A));
-    
-    for i=1:length(NEW.kmers_nt)
-        if(mod(i, 1000) == 0)
-            run_i = i
-        end
-        for j=1:k_species
-            NEW.Mat(i,j) = length(strfind(P.SSS{j}, NEW.kmers_nt(i,:))); % count number of alleles % ~isempty
-        end
-    end
-    
-    
-    for i=1:length(U.kmers_nt)
-        for j=1:k_species
-            U.Mat(i,j) = ~isempty(strfind(P.SSS{j}, U.kmers_nt(i,:)));
-        end
-    end
-    for i=1:length(P.kmers_nt)
-        for j=1:k_species
-            P.Mat(i,j) = ~isempty(strfind(P.SSS{j}, P.kmers_nt(i,:)));
-        end
-    end
-    for i=1:length(INT.kmers_nt)
-        for j=1:k_species
-            INT.Mat(i,j) = ~isempty(strfind(P.SSS{j}, INT.kmers_nt(i,:)));
-        end
-    end
-    
-    
-    P.vec = sum(P.Mat')>0; U.vec = sum(U.Mat')>0; INT.vec = sum(INT.Mat')>0;  NEW.vec = sum(NEW.Mat'); bad_f = find(NEW.vec==0)
-    find(P.vec==0)
-    find(U.vec==0)
-    find(INT.vec==0)
-    find(NEW.vec==0)
-    
-    NEW.Mat(bad_f, :)
-    A(bad_f,:)
-    good_f = setdiff(1:length(NEW.vec), bad_f)
-    NEW.Mat(good_f,:)
-    full(A(good_f,:)) - NEW.Mat(good_f,:)
-    
-    
-    
-    bad_seq = zeros(length(S.Sequence_uni),1);
-    for i=1:length(S.Sequence_uni)
-        if(mod(i,1000)==0)
-            ii = i
-        end
-        cur_U = upper(unique(S.Sequence_uni{i}));
-        if(~isempty(setdiff(cur_U, 'ACGT')))
-            bad_seq(i)=1;
-        end
-    end
-    
-    bad_seq_inds = find(bad_seq)
-    
-    for i=bad_seq_inds'
-        num_bad_characters(i) = sum( ~( ((S.Sequence_uni{i} == 'A') | (S.Sequence_uni{i} == 'C')) | ...
-            ((S.Sequence_uni{i} == 'G') | (S.Sequence_uni{i} == 'T')) ) );
-    end
-    
-    [K_INTER K_I K_J] = intersect(kmers_packed, uint32(UN.kmers_packed));
-    [bad_I bad_J] = find(A(K_I,:) ~= UN.A(K_J,:))
-    all_bad_J = unique(bad_J)
-    setdiff(bad_J, bad_seq_inds)
-    
-    
-    
-end % if new debug
-
-
-
-make_fig_time = cputime - start_time
+make_figs_time = cputime - start_time
