@@ -49,7 +49,7 @@ or contact shental@openu.ac.il for help in creating a Mac/Windows version.
 	
 2.4 Demo/Usage Example: 
 
-2.4.1. After installation, you can run the following script/function example_of_a_single_simulation.m
+2.4.1. After installation, you can run the script example_of_a_single_simulation.m
 This script demonstrates most of COMPASS' main modules. 
 It simulates a bacterial mixture, sample reads, reconstruct identities, and compare reconstructed solution to original vector. 
 
