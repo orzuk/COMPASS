@@ -1,12 +1,12 @@
-% Main scrupt implementing STRIP operations.
+% Main scrupt implementing COMPASS operations.
 % The script enables simulation of a mixture and read data, reconstruction
 % of species frequency vector from reads data, and evaluation of solution
 % accuracy. 
 % 
 % Input: 
 % auxDataFileName - Name of parameters file 
-% 
-function STRIPMain(auxDataFileName)
+
+function COMPASSMain(auxDataFileName)
 
 
 load(auxDataFileName) % load a file which has a variable by the name auxData. NEED To enable also reading a .txt file!!! 
