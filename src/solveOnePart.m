@@ -30,7 +30,7 @@ for i=allocateToOneFirst:allocateToOneLast
     disp('non found')
   end
   
-  if sumRelevantReads(i)>0
+  if sumRelevantReads(i)>0 
     [x{i}]=runOneGroupOf1000ForCompilationFourth(normalizedBac,fracRelevantReads);    
   else
     x{i} = zeros(size(normalizedBac,2),1);
